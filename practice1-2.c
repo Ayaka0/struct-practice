@@ -9,8 +9,9 @@ struct xyz {
 	double z;
 };
 
+
 //{x,y,z}の値を持つxyz構造体を返却する関数
-struct xyz  xyz_of(int x, long y, double z) {
+struct xyz  scan_xyz(int x, long y, double z) {
 	struct xyz temp;
 
 	temp.x = x;
@@ -20,13 +21,26 @@ struct xyz  xyz_of(int x, long y, double z) {
 }
 
 int main(void) {
-	struct xyz s;
+	int x;
+	long y;
+	double z;
 
-	s = xyz_of(12, 7654321, 35.689);
+	printf("x = ");
+	scanf("%d", &x);
+	printf("y = ");
+	scanf("%ld", &y);
+	printf("z = ");
+	scanf("%lf", &z);
+	
+	struct xyz s = scan_xyz(x, y, z); // 構造体を返却する関数を呼び出して、結果を変数sに代入します
 
-	printf("xyz.x = %d\n", s.x);
-	printf("xyz.y = %ld\n", s.y);
-	printf("xyz.z = %f\n", s.z);
+	printf("x = %d\n", s.x);
+	printf("y = %ld\n", s.y);
+	printf("z = %f\n", s.z);
+	/*printf("");
+	printf();
+	printf();
 
+	*/
 	return 0;
 }

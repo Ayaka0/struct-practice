@@ -41,6 +41,7 @@ int move(Car* c, Point dest)
 	return 1; //移動成功
 }
 
+/*
 int main(void)
 {
 	Car mycar = { {0.0, 0.0}, 90.0 };
@@ -53,6 +54,39 @@ int main(void)
 		if (select != 1) break;
 		printf("目的地のＸ座標："); scanf("%lf", &dest.x);
 		printf("　　　　Ｙ座標："); scanf("%lf", &dest.y);
+		if (!move(&mycar, dest))
+			puts("燃料不足で移動できません。");
+	}
+	return 0;
+}
+*/
+
+
+int main(void)
+{
+	Car mycar = { {0.0, 0.0}, 90.0 };
+	while (1) {
+		int select;
+		Point dest;
+
+		put_info(mycar);
+		printf("移動しますか【1…移動入力座標 / 2…移動距離入力 / 0…終了】");
+		scanf("%d", &select);
+		if (select != 1 && select != 2) break;
+		switch (select) {
+		case 1:
+			printf("目的地のX座標："); scanf("%lf", &dest.x);
+			printf("        Y座標："); scanf("%lf", &dest.y);
+			break;
+		case 2: {
+			double x, y;
+			printf("X方向の移動距離："); scanf("%lf", &x);
+			printf("Y方向の移動距離："); scanf("%lf", &y);
+			dest.x = mycar.pt.x + x;
+			dest.y = mycar.pt.y + y;
+			break;
+		}
+		}
 		if (!move(&mycar, dest))
 			puts("燃料不足で移動できません。");
 	}
